@@ -1,0 +1,18 @@
+{
+    "name": "JC.MiniJam107.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:42f352aa7302fce4380155c6dda8aee5"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,17 @@
+{
+    "name": "JC.MiniJam107",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e3e1471c834d4c04185f9f8c01b8293f",
+        "GUID:3205d51b1fa576646a565f2a9e0cf8cb"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
