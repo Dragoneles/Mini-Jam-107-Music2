@@ -29,14 +29,12 @@ public class PlayerController : MonoBehaviour
 
     [Header("Component References")]
     [SerializeField] private new Rigidbody2D rigidbody;
-    [SerializeField] private new SpriteRenderer renderer;
     [SerializeField] private Animator animator;
     [SerializeField] private FeetCollider feetCollider;
 
     private void OnValidate()
     {
         rigidbody ??= GetComponent<Rigidbody2D>();
-        renderer ??= GetComponentInChildren<SpriteRenderer>();
         animator ??= GetComponentInChildren<Animator>();
         feetCollider ??= GetComponentInChildren<FeetCollider>();
     }
@@ -44,7 +42,6 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         UpdateAnimator();
-        UpdateRotation();
     }
 
     private void FixedUpdate()
@@ -89,6 +86,9 @@ public class PlayerController : MonoBehaviour
             // accelerate
             Vector2 acceleration = moveDirection * accelerationMagnitude;
             rigidbody.AddForce(acceleration);
+
+            float facingDirection = rigidbody.velocity.x > 0f ? 1f : -1f;
+            transform.localScale = new Vector2(facingDirection, 1f);
         }
     }
 
@@ -114,14 +114,5 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("MoveAnimationScalar", moveScalar);
 
         animator.SetBool("IsGrounded", feetCollider.IsGrounded);
-    }
-
-    private void UpdateRotation()
-    {
-        if (rigidbody.velocity.magnitude < notMovingEpsilon)
-            return;
-
-        float facingDirection = rigidbody.velocity.x > 0f ? 1f : -1f;
-        transform.localScale = new Vector2(facingDirection, 1f);
     }
 }
