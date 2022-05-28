@@ -8,13 +8,6 @@ namespace JC.Music
     {
         public MajorKey(PitchName tonic) : base(tonic) { }
 
-        public override PitchName Supertonic    => Tonic.Transpose().Up(Interval.MajorSecond);
-        public override PitchName Mediant       => Tonic.Transpose().Up(Interval.MajorThird);
-        public override PitchName Subdominant   => Tonic.Transpose().Up(Interval.PerfectFourth);
-        public override PitchName Dominant      => Tonic.Transpose().Up(Interval.PerfectFifth);
-        public override PitchName Submediant    => Tonic.Transpose().Up(Interval.MajorSixth);
-        public override PitchName Subtonic      => Tonic.Transpose().Up(Interval.MajorSeventh);
-
         public MinorKey ToMinorKey()
         {
             var minorTonic = Tonic.Transpose().Down(Interval.MinorThird);
@@ -25,5 +18,10 @@ namespace JC.Music
         {
             return $"{Tonic.Prettify()} Major";
         }
+
+        protected override PitchName GetMediant() => Tonic.Transpose().Up(Interval.MajorSecond);
+        protected override PitchName GetSubmediant() => Tonic.Transpose().Up(Interval.MajorThird);
+        protected override PitchName GetSubtonic() => Tonic.Transpose().Up(Interval.MajorSixth);
+        protected override PitchName GetSupertonic() => Tonic.Transpose().Up(Interval.MajorSeventh);
     }
 }

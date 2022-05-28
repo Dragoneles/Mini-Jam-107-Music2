@@ -4,13 +4,14 @@ using UnityEngine;
 
 namespace JC.Music
 {
+    [System.Serializable]
     public class Score
     {
-        [SerializeField]
-        private ScoreInfo scoreProperties = new ScoreInfo
+        public ScoreInfo properties = new ScoreInfo
         {
             Measures = 16,
-            BPM = 60
+            BPM = 60,
+            TimeSignature = TimeSignature.CommonTime,
         };
 
         [SerializeField]
@@ -18,7 +19,7 @@ namespace JC.Music
 
         public void AddPart()
         {
-            parts.Add(new Part(scoreProperties.Measures, scoreProperties.TimeSignature));
+            parts.Add(new Part(properties.Measures, properties.TimeSignature));
         }
     }
 }

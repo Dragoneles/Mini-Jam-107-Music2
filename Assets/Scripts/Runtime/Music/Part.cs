@@ -9,7 +9,7 @@ namespace JC.Music
     /// <see cref="Score"/>s are comprised of multiple parts.
     /// </summary>
     [System.Serializable]
-    public struct Part
+    public class Part
     {
         public Measure[] Measures;
         public TimeSignature TimeSignature;

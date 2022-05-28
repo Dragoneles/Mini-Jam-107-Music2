@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace JC.Music
 {
-
     /// <summary>
     /// Information pertaining to a score.
     /// </summary>
+    [System.Serializable]
     public struct ScoreInfo
     {
         public event Action<ScoreInfo> Changed;
@@ -29,8 +29,8 @@ namespace JC.Music
         }
 
         [SerializeField]
-        private int _bpm;
-        public int BPM
+        private double _bpm;
+        public double BPM
         {
             get => _bpm;
             set
