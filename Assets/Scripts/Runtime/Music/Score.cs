@@ -13,11 +13,12 @@ namespace JC.Music
             BPM = 60
         };
 
-        void MakeNotes()
+        [SerializeField]
+        private HashSet<Part> parts = new();
+
+        public void AddPart()
         {
-            var note1 = NoteFactory.New.Dotted.Eighth.Note(new Pitch(PitchName.F_natural));
-            var rest = NoteFactory.New.Whole.Rest();
-            var note2 = NoteFactory.New.Dotted.Dotted.Half.Note(new Pitch(PitchName.C_natural));
+            parts.Add(new Part(_scoreProperties.Measures))
         }
     }
 }

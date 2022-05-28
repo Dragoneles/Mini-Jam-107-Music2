@@ -9,5 +9,6 @@ namespace JC.Music
     {
         public event Action Played;
 
+        public double Length;
     }
 }

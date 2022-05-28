@@ -42,5 +42,16 @@ namespace JC.Music
                 Changed?.Invoke(this);
             }
         }
+
+        private TimeSignature _timeSignature;
+        public TimeSignature TimeSignature
+        {
+            get => _timeSignature;
+            set
+            {
+                if (_timeSignature == value)
+                    return;
+            }
+        }
     }
 }

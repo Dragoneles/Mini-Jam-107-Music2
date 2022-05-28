@@ -10,5 +10,20 @@ namespace JC.Music
         public int NumberOfBeats => Beats.Length;
         public Beat Downbeat => Beats[0];
         public Beat[] Beats;
+        public double BeatLength;
+
+        public Measure(int beats, double beatLength)
+        {
+            Beats = new Beat[beats];
+            BeatLength = beatLength;
+
+            for (int i = 0; i < Beats.Length; i++)
+            {
+                Beats[i] = new Beat 
+                { 
+                    Length = BeatLength 
+                };
+            }
+        }
     }
 }
