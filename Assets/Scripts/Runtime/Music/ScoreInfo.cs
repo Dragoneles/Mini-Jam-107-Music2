@@ -51,6 +51,9 @@ namespace JC.Music
             {
                 if (_timeSignature == value)
                     return;
+
+                _timeSignature = value;
+                Changed?.Invoke(this);
             }
         }
     }

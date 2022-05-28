@@ -7,8 +7,6 @@ namespace JC.Music
     [System.Serializable]
     public struct Beat
     {
-        public event Action Played;
-
         public double Length;
     }
 }

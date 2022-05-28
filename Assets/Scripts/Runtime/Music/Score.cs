@@ -7,7 +7,7 @@ namespace JC.Music
     public class Score
     {
         [SerializeField]
-        private ScoreInfo _scoreProperties = new ScoreInfo
+        private ScoreInfo scoreProperties = new ScoreInfo
         {
             Measures = 16,
             BPM = 60
@@ -18,7 +18,7 @@ namespace JC.Music
 
         public void AddPart()
         {
-            parts.Add(new Part(_scoreProperties.Measures))
+            parts.Add(new Part(scoreProperties.Measures, scoreProperties.TimeSignature));
         }
     }
 }
