@@ -14,9 +14,6 @@ namespace JC.Music
         private PitchName _root;
         public override PitchName Root => _root;
 
-        private Dictionary<int, PitchName> _scaleIndices = new();
-        protected override Dictionary<int, PitchName> scaleIndices => _scaleIndices;
-
         public ChromaticScale(PitchName root = PitchName.A_natural)
         {
             _root = root;

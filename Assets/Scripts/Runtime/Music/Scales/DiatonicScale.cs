@@ -20,9 +20,6 @@ namespace JC.Music
         public PitchName Submediant => Key.Submediant;
         public PitchName Subtonic => Key.Subtonic;
 
-        private Dictionary<int, PitchName> _scaleIndices;
-        protected override Dictionary<int, PitchName> scaleIndices => throw new System.NotImplementedException();
-
         public DiatonicScale(MajorKey key)
         {
             Key = key;

@@ -20,8 +20,6 @@ namespace JC.Music
         /// </summary>
         public abstract int Length { get; }
 
-        protected abstract Dictionary<int, PitchName> scaleIndices { get; }
-
         /// <summary>
         /// Scale indexer, retrieves a pitch from the scale based on how many
         /// tonal steps it is from the root.
@@ -44,7 +42,7 @@ namespace JC.Music
                 if (index < 0)
                     index += Length;
 
-                return scaleIndices[index];
+                throw new System.NotImplementedException();
             }
         }
     }
