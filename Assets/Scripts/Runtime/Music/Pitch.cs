@@ -36,7 +36,7 @@ namespace JC.Music
     }
 
     [Serializable]
-    public struct Pitch
+    public struct Pitch : IEquatable<Pitch>
     {
         public PitchName Name;
         public int Octave;
@@ -45,6 +45,11 @@ namespace JC.Music
         {
             Name = name;
             Octave = octave;
+        }
+
+        public bool Equals(Pitch other)
+        {
+            return (Name == other.Name) && (Octave == other.Octave);
         }
 
         public override string ToString()

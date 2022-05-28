@@ -12,5 +12,12 @@ namespace JC.Music
             Measures = 16,
             BPM = 60
         };
+
+        void MakeNotes()
+        {
+            var note1 = NoteFactory.New.Dotted.Eighth.Note(new Pitch(PitchName.F_natural));
+            var rest = NoteFactory.New.Whole.Rest();
+            var note2 = NoteFactory.New.Dotted.Dotted.Half.Note(new Pitch(PitchName.C_natural));
+        }
     }
 }
