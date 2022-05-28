@@ -14,5 +14,16 @@ namespace JC.Music
         public override PitchName Dominant      => Tonic.Transpose().Up(Interval.PerfectFifth);
         public override PitchName Submediant    => Tonic.Transpose().Up(Interval.MinorSixth);
         public override PitchName Subtonic      => Tonic.Transpose().Up(Interval.MinorSeventh);
+
+        public MajorKey ToMajorKey()
+        {
+            var majorTonic = Tonic.Transpose().Up(Interval.MinorThird);
+            return new MajorKey(majorTonic);
+        }
+
+        public override string ToString()
+        {
+            return $"{Tonic.Prettify()} minor";
+        }
     }
 }

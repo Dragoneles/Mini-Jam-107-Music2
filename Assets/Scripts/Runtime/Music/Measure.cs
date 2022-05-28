@@ -5,7 +5,7 @@ using UnityEngine;
 namespace JC.Music
 {
     [System.Serializable]
-    public class Measure
+    public struct Measure
     {
         public int NumberOfBeats => Beats.Length;
         public Beat Downbeat => Beats[0];

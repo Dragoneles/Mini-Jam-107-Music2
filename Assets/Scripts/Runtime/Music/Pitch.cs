@@ -49,16 +49,7 @@ namespace JC.Music
 
         public override string ToString()
         {
-            string name = Enum.GetName(typeof(PitchName), Name);
-            string[] splitName = name.Split('_');
-
-            string symbol =
-                splitName[1] == "sharp" ? "#" :
-                splitName[1] == "flat" ? "b" :
-                splitName[1] == "natural" ? "nat" : 
-                default;
-
-            return $"{splitName[0]}{symbol} {Octave}";
+            return $"{Name.Prettify()} {Octave}";
         }
     }
 }

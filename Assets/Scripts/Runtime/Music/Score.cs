@@ -12,7 +12,5 @@ namespace JC.Music
             Measures = 16,
             BPM = 60
         };
-
-
     }
 }

@@ -4,40 +4,64 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(AudioSource))]
 public class SinewaveExample : MonoBehaviour
 {
-    public int position = 0;
-    public int samplerate = 44100;
-    public float frequency = 440;
+    [Range(1, 20000)]  //Creates a slider in the inspector
+    public float frequency1;
 
-    private AudioSource audioSource;
+    [Range(1, 20000)]  //Creates a slider in the inspector
+    public float frequency2;
+
+    public float sampleRate = 44100;
+    public float waveLengthInSeconds = 2.0f;
+
+    AudioSource audioSource;
+    int timeIndex = 0;
 
     void Start()
     {
-        AudioClip myClip = AudioClip.Create("MySinusoid", samplerate * 2, 1, samplerate, true, OnAudioRead, OnAudioSetPosition);
         audioSource = GetComponent<AudioSource>();
-        audioSource.clip = myClip;
+        audioSource.playOnAwake = false;
+        audioSource.spatialBlend = 0; //force 2D sound
+        audioSource.Stop(); //avoids audiosource from starting to play automatically
     }
 
-    private void Update()
+    void Update()
     {
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            audioSource.Play();
+            if (!audioSource.isPlaying)
+            {
+                timeIndex = 0;  //resets timer before playing sound
+                audioSource.Play();
+            }
+            else
+            {
+                audioSource.Stop();
+            }
         }
     }
 
-    void OnAudioRead(float[] data)
+    void OnAudioFilterRead(float[] data, int channels)
     {
-        int count = 0;
-        while (count < data.Length)
+        for (int i = 0; i < data.Length; i += channels)
         {
-            data[count] = Mathf.Sin(2 * Mathf.PI * frequency * position / samplerate);
-            position++;
-            count++;
+            data[i] = CreateSine(timeIndex, frequency1, sampleRate);
+
+            if (channels == 2)
+                data[i + 1] = CreateSine(timeIndex, frequency2, sampleRate);
+
+            timeIndex++;
+
+            //if timeIndex gets too big, reset it to 0
+            if (timeIndex >= (sampleRate * waveLengthInSeconds))
+            {
+                timeIndex = 0;
+            }
         }
     }
 
-    void OnAudioSetPosition(int newPosition)
+    //Creates a sinewave
+    public float CreateSine(int timeIndex, float frequency, float sampleRate)
     {
-        position = newPosition;
+        return Mathf.Sin(2 * Mathf.PI * timeIndex * frequency / sampleRate);
     }
 }
